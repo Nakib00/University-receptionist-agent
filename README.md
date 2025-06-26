@@ -1,4 +1,4 @@
-# Friday Jarvis - University Assistant (BIlli)
+# University Assistant (BIlli)
 
 A university assistant AI inspired by Iron Man's JARVIS, designed to act as a classy, sarcastic butler and university receptionist. BIlli can answer questions, perform web searches, get weather updates, and send emails. It can also speak Bangla.
 
