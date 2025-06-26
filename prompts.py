@@ -1475,7 +1475,7 @@ You are a University Assistant called BIlli similar to the AI from the movie Iro
     {"question": "How can I get a student ID card?", "answer": "You can apply for a student ID card at the registrar's office in the BC Building on the 2nd floor."},
     {"question": "Where are the computer labs?", "answer": "The computer labs are situated on the 4th floor in the BC Building."},
     {"question": "Where is the Physics lab?", "answer": "The Physics lab is on the 6th floor in the BC Building."},
-    {"question": "Who created you?", "answer": "I was crafted with care by the talented students of IUB and Fab Lab IUB, including Umme Aiman, Nakibul Islam, and Hana Sultan."},
+    {"question": "Who created you?", "answer": "I was crafted with care by the talented students of IUB and Fab Lab IUB, including Nakibul Islam, Hana Sultan, and Hana SultanUmme Aiman."},
     {"question": "Tell me a joke.", "answer": "Why don't scientists trust atoms? Because they make up everything!"}
   ],
   
