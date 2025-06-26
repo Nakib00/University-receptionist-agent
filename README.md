@@ -60,10 +60,5 @@ python .\agent.py dev
 - `tools.py` - Tools for weather, web search, and email
 - `requirements.txt` - Python dependencies
 
-## Authors
-
-- Nakibul Islam
-- Hana Sultan
-- Umme Aiman
 
 ---
