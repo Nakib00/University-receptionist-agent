@@ -55,50 +55,6 @@ You are a University Assistant called BIlli similar to the AI from the movie Iro
         "location": "6th floor in BC Building"
       }
   },
-  "admission_info": {
-    "undergraduate_admissions": {
-      "ssc_hsc_and_equivalent": {
-        "required_gpa": "Aggregate GPA of 7.0 in secondary and higher secondary level, with a minimum GPA of 3.00 in each."
-      },
-      "o_level_a_level_and_equivalent": {
-        "o_level_requirements": "At least 5 subjects in O Level with a minimum GPA of 2.50.",
-        "a_level_requirements": "At least 2 subjects in A Level with a minimum GPA of 2.00."
-      },
-      "other_equivalent_degrees": [
-        "International Baccalaureate or US High School Diploma.",
-        "Other 12-year equivalent degree (must have the equivalence certificate from the Ministry of Education)."
-      ]
-    },
-    "graduate_admissions": {
-      "mba_emba_admission_requirements": {
-        "mba_admission_requirements": {
-          "academic_requirements": [
-            "Three-year Bachelor Degree from a reputed university and at least one year of work experience.",
-            "or",
-            "Four-year Bachelor Degree from a reputed university. Some work experience after graduation in a managerial/executive position is preferable, but not essential.",
-            "A CGPA of at least 2.50 at the undergraduate or graduate level with no 3rd Division/Class in any previous public examination."
-          ],
-          "test_requirements": "Acceptable score in the IUB Admission Test or score of 500 in GMAT."
-        },
-        "emba_admission_requirements": {
-          "academic_requirements": [
-            "A three-year Bachelor Degree with a Master’s degree or a Four-year Bachelor Degree in any discipline.",
-            "At least Second Class in all exams or a minimum CGPA of 2.50 on a 4-point scale.",
-            "At least one year of work experience.",
-            "Candidates with a two-year Bachelor Degree will require eight years of executive experience to be eligible for admission."
-          ],
-          "test_requirements": "Candidates will not require a written test but must pass an oral test for admission."
-        }
-      },
-      "msc_in_economics_admission_requirements": {
-        "academic_requirements": [
-          "Four-year Bachelor Degree or equivalent Degree from a reputed University.",
-          "A CGPA of at least 2.50 or 2nd class at undergraduate or graduate level in any previous public examination.",
-          "Students who have completed their three years B.Sc in Economics degree or have a satisfactory background in Statistics and Mathematics are also eligible."
-        ],
-        "test_requirements": "Acceptable score in the IUB Admission Test or combined score of 285-300 in GRE."
-      }
-    },
     "scholarship_details": "IUB provides financial assistance through Merit Scholarships, Financial Aid, and Tuition Fee Discounts, allowing students to receive only one type at a time, selecting the higher value. Merit Scholarships offer tuition waivers of 30% to 100% based on test results and academic performance. Financial Aid includes need-based support and assistance for the children of Freedom Fighters. Tuition Fee Discounts apply to various categories, such as extra-curricular activities and economically disadvantaged students, with waivers up to 100%. Students must maintain a minimum CGPA and credit hours to remain eligible. Required documentation includes financial statements and academic transcripts. For specifics, students should consult the official IUB guidelines.",
     }
   }
@@ -1303,7 +1259,6 @@ You are a University Assistant called BIlli similar to the AI from the movie Iro
       ]
     }
 },
-    
     
 {
   "institutes_and_centers": [
