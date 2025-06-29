@@ -8,7 +8,8 @@ from livekit.plugins import (
 from livekit.plugins import google
 from prompts import AGENT_INSTRUCTION, SESSION_INSTRUCTION
 from tools import get_weather, search_web, save_unanswered_question
-from admissions_and_program_tool import get_undergraduate_admissions_info, get_graduate_admissions_info
+
+from university_info_tool import get_university_info
 
 load_dotenv()
 
@@ -25,8 +26,7 @@ class Assistant(Agent):
                 get_weather,
                 search_web,
                 save_unanswered_question,
-                get_undergraduate_admissions_info,
-                get_graduate_admissions_info,
+                get_university_info,
             ],
 
         )
