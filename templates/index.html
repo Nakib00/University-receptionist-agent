@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>University Data Manager</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="card-header">
+          <h2>Questions Inbox</h2>
+        </div>
+        <div id="unanswered-questions-container"></div>
+
+        <div class="card-header" style="margin-top: 2em">
+          <h2>Recently Answered</h2>
+        </div>
+        <div id="answered-questions-container"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>University Data Editor</h2>
+        </div>
+
+        <div>
+          <h3>Edit Existing Section</h3>
+          <select id="data-section-select" class="data-select">
+            <option value="">-- Select a Section --</option>
+          </select>
+          <textarea
+            id="data-editor"
+            class="data-editor"
+            placeholder="Select a section to edit its data..."
+          ></textarea>
+          <div id="edit-validation-message" class="validation-message"></div>
+          <button id="update-data-btn" class="btn update-btn">
+            Update Section
+          </button>
+        </div>
+
+        <hr
+          style="
+            width: 100%;
+            border: none;
+            border-top: 1px solid var(--border-color);
+            margin: 2em 0;
+          "
+        />
+
+        <div>
+          <h3>Add New Section</h3>
+          <input
+            type="text"
+            id="new-section-key"
+            class="data-input"
+            placeholder="New Section Name (e.g., admissions_info)"
+          />
+          <textarea
+            id="new-section-data"
+            class="data-editor"
+            placeholder="New Section Data (in JSON format)..."
+          ></textarea>
+          <div id="add-validation-message" class="validation-message"></div>
+          <button id="add-section-btn" class="btn add-btn">
+            Add New Section
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>
