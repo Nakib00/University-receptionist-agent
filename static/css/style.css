@@ -1,4 +1,3 @@
-/* === Modern UI Overhaul for University Receptionist Agent === */
 
 /* 1. Global Styles & Variables */
 :root {
@@ -205,6 +204,15 @@ body {
 .btn-answer:hover {
   background-color: #1ba980; 
 }
+
+.btn-undo {
+  background-color: var(--error-color);
+}
+
+.btn-undo:hover {
+  background-color: #d9352d; 
+}
+
 
 .btn {
   display: inline-flex;

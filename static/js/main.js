@@ -99,8 +99,38 @@ document.addEventListener("DOMContentLoaded", function () {
         const div = document.createElement("div");
         div.className = "answered-item";
         div.innerHTML = `<div><strong>Q:</strong> ${item.question}</div><div style="color: var(--secondary-text-color);"><strong>A:</strong> ${item.answer}</div>`;
+        const undoBtn = document.createElement('button');
+        undoBtn.className = 'btn btn-undo';
+        undoBtn.innerHTML = `<i data-feather="undo"></i> Undo`;
+        undoBtn.onclick = () => {
+            fetch("/undo_answer", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    question: item.question
+                })
+            })
+            .then(res => res.json())
+            .then(result => {
+                if (result.success) {
+                    div.remove();
+                    unansweredContainer.appendChild(createQuestionCard({
+                        question: item.question
+                    }));
+                    showToast("Question moved back to inbox!");
+                    checkAndSetScrollable();
+                    feather.replace();
+                } else {
+                    showToast('Error: ' + result.error, 'error');
+                }
+            });
+        };
+        div.appendChild(undoBtn);
         return div;
     }
+
 
     // --- University Data Editor ---
     function populateSectionDropdown() {
