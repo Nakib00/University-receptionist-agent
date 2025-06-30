@@ -1,163 +1,239 @@
+/* === Modern UI Overhaul for University Receptionist Agent === */
+
+/* 1. Global Styles & Variables */
 :root {
-  --primary-color: #007bff;
-  --success-color: #28a745;
-  --error-color: #dc3545;
-  --background-color: #f8f9fa;
-  --card-bg-color: #ffffff;
-  --text-color: #212529;
-  --secondary-text-color: #6c757d;
-  --border-color: #dee2e6;
-  --shadow-color: rgba(0, 0, 0, 0.1);
+    --primary-color: #007AFF;
+    --success-color: #34C759;
+    --error-color: #FF3B30;
+    --background-color: #F2F2F7;
+    --card-bg-color: #FFFFFF;
+    --text-color: #1D1D1F;
+    --secondary-text-color: #6E6E73;
+    --border-color: #E5E5EA;
+    --shadow-color: rgba(0, 0, 0, 0.05);
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
-  margin: 0;
-  padding: 2em;
-  background-color: var(--background-color);
-  color: var(--text-color);
+    font-family: var(--font-family);
+    margin: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-.container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2em;
-  max-width: 1600px;
-  margin: auto;
+/* 2. Layout & Page Structure */
+.page-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2em;
 }
 
+.page-header {
+    text-align: center;
+    margin-bottom: 3em;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.page-header p {
+    font-size: 1.1rem;
+    color: var(--secondary-text-color);
+    margin-top: 0.5em;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2em;
+}
+
+@media (min-width: 992px) {
+    .main-content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* 3. Card Component */
 .card {
-  background-color: var(--card-bg-color);
-  padding: 2em;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px var(--shadow-color);
-  display: flex;
-  flex-direction: column;
+    background-color: var(--card-bg-color);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px var(--shadow-color);
+    display: flex;
+    flex-direction: column;
 }
 
 .card-header {
-  display: flex;
-  align-items: center;
-  gap: 0.75em;
-  color: var(--text-color);
-  border-bottom: 2px solid var(--primary-color);
-  padding-bottom: 0.5em;
-  margin-bottom: 1.5em;
+    display: flex;
+    align-items: center;
+    gap: 0.75em;
+    padding: 1.5em;
+    border-bottom: 1px solid var(--border-color);
 }
+
 .card-header h2 {
-  margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.card-header i {
+    color: var(--primary-color);
+}
+
+.card-body {
+    padding: 1.5em;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+/* 4. Question & Answer List */
+.question-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
 }
 
 .question-list.scrollable {
-  max-height: 250px; /* Or any height you prefer */
-  overflow-y: auto;
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
+    max-height: 280px;
+    overflow-y: auto;
+    padding-right: 1em;
 }
 
-.question-item,
-.answered-item {
-  border-bottom: 1px solid var(--border-color);
-  padding: 1.25em 0.5em;
-  transition: background-color 0.2s ease-in-out;
+.question-item, .answered-item {
+    padding: 1em;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.2s;
 }
-.question-item:hover {
-  background-color: #f8f9fa;
+
+.question-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
 }
 
 .question-text {
-  font-weight: 600;
-  margin-bottom: 1em;
+    font-weight: 500;
 }
 
-.data-input,
-.data-select,
-.data-editor {
-  width: 100%;
-  margin: 0.5em 0;
-  padding: 0.8em;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  box-sizing: border-box;
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-.data-input:focus,
-.data-select:focus,
-.data-editor:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+.answered-item div:first-child {
+    font-weight: 500;
 }
 
-.data-editor {
-  flex-grow: 1;
-  font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
-  font-size: 14px;
-  min-height: 200px;
-  resize: vertical;
+.answered-item div:last-child {
+    color: var(--secondary-text-color);
+    font-size: 0.9rem;
+    margin-top: 0.5em;
 }
-.data-editor.valid {
-  border-color: var(--success-color);
+
+/* 5. Forms & Inputs */
+.form-section {
+    display: flex;
+    flex-direction: column;
 }
-.data-editor.invalid {
-  border-color: var(--error-color);
+
+.form-section h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 1em 0;
+}
+
+.form-input, .form-select, .form-textarea {
+    width: 100%;
+    padding: 0.8em 1em;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: #F8F8F8;
+    font-family: var(--font-family);
+    font-size: 0.95rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+    background-color: var(--card-bg-color);
+}
+
+.form-textarea {
+    min-height: 150px;
+    resize: vertical;
+    font-family: "SF Mono", "Fira Code", monospace;
+}
+
+.form-textarea.valid {
+    border-color: var(--success-color);
+}
+.form-textarea.invalid {
+    border-color: var(--error-color);
 }
 
 .validation-message {
-  font-size: 0.9em;
-  height: 1.2em;
-  color: var(--error-color);
-  margin-top: 0.25em;
+    font-size: 0.85rem;
+    color: var(--error-color);
+    margin-top: 0.5em;
+    min-height: 1.2em;
 }
 
+.form-divider {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 2em 0;
+}
+
+/* 6. Buttons */
 .btn {
-  margin-top: 1em;
-  padding: 0.8em 1.5em;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: transform 0.2s, box-shadow 0.2s;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5em;
-  color: white;
-}
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px var(--shadow-color);
-}
-.submit-btn {
-  background-color: var(--primary-color);
-}
-.update-btn {
-  background-color: var(--success-color);
-}
-.add-btn {
-  background-color: #9b59b6;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    margin-top: 0.5em;
+    padding: 0.8em 1.5em;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: transform 0.1s, opacity 0.2s;
+    color: #FFF;
 }
 
-/* Toast Notification Styles */
+.btn:hover {
+    opacity: 0.85;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary { background-color: var(--primary-color); }
+.btn-success { background-color: var(--success-color); }
+
+/* 7. Toast Notification */
 #toast {
-  position: fixed;
-  bottom: -100px; /* Start off-screen */
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 1em 2em;
-  border-radius: 8px;
-  color: white;
-  transition: bottom 0.5s ease-in-out;
-  z-index: 1000;
-  font-weight: 600;
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1em 2em;
+    border-radius: 8px;
+    color: white;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    font-weight: 600;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    z-index: 1000;
 }
 #toast.show {
-  bottom: 40px;
+    bottom: 40px;
 }
-#toast.success {
-  background-color: var(--success-color);
-}
-#toast.error {
-  background-color: var(--error-color);
-}
+#toast.success { background-color: var(--success-color); }
+#toast.error { background-color: var(--error-color); }
