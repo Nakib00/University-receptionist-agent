@@ -7,7 +7,6 @@ A university assistant AI inspired by Iron Man's JARVIS, designed to act as a cl
 - Persona-based AI assistant (BIlli)
 - Weather updates
 - Web search (DuckDuckGo)
-- Email sending
 - Sarcastic, butler-style responses
 - Bangla language support
 
@@ -17,7 +16,6 @@ A university assistant AI inspired by Iron Man's JARVIS, designed to act as a cl
 
 ```powershell
 git clone <your-repo-url>
-cd friday_jarvis
 ```
 
 ### 2. Create and Activate a Virtual Environment
@@ -35,7 +33,7 @@ pip install -r requirements.txt
 
 ### 4. Set Up Environment Variables
 
-Create a `.env` file in the project root and add any required environment variables (API keys, credentials, etc.) as needed by your plugins and tools.
+Create a `.env` file in the project root and add any required environment variables as needed by your plugins and tools.
 
 ### 5. Running the Project
 
@@ -53,12 +51,4 @@ python .\agent.py dev
 
 ---
 
-## Project Structure
 
-- `agent.py` - Main entry point for the assistant
-- `prompts.py` - Persona and prompt instructions
-- `tools.py` - Tools for weather, web search, and email
-- `requirements.txt` - Python dependencies
-
-
----
