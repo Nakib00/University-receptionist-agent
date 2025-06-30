@@ -49,6 +49,13 @@ body {
   margin: 0;
 }
 
+.question-list.scrollable {
+  max-height: 250px; /* Or any height you prefer */
+  overflow-y: auto;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
 .question-item,
 .answered-item {
   border-bottom: 1px solid var(--border-color);

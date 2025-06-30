@@ -43,6 +43,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    function checkAndSetScrollable() {
+        if (unansweredContainer.children.length > 3) {
+            unansweredContainer.classList.add("scrollable");
+        } else {
+            unansweredContainer.classList.remove("scrollable");
+        }
+
+        if (answeredContainer.children.length > 3) {
+            answeredContainer.classList.add("scrollable");
+        } else {
+            answeredContainer.classList.remove("scrollable");
+        }
+    }
+
     // --- Question Management ---
     function createQuestionCard(item) {
         const div = document.createElement("div");
@@ -70,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             answer: "Marked as answered."
                         }));
                         showToast("Question marked as answered!");
+                        checkAndSetScrollable();
                     } else {
                         showToast('Error: ' + result.error, 'error');
                     }
@@ -121,6 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
             answeredContainer.innerHTML = "";
             answeredData.answered.forEach(item => answeredContainer.appendChild(createAnsweredCard(item)));
 
+            checkAndSetScrollable(); // Call this function after loading the questions
         } catch (error) {
             showToast("Failed to fetch data from the server.", "error");
         }
