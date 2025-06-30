@@ -63,8 +63,8 @@ document.addEventListener("DOMContentLoaded", function () {
         div.className = "question-item";
         div.innerHTML = `<div class="question-text">${item.question}</div>`;
         const submitBtn = document.createElement('button');
-        submitBtn.className = 'btn submit-btn';
-        submitBtn.innerHTML = `Mark as Answered`;
+        submitBtn.className = 'btn btn-answer';
+        submitBtn.innerHTML = `<i data-feather="send"></i> Mark as Answered`;
         submitBtn.onclick = () => {
             fetch("/answer_question", {
                     method: "POST",
@@ -85,6 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         }));
                         showToast("Question marked as answered!");
                         checkAndSetScrollable();
+                        feather.replace(); // Re-run Feather icons
                     } else {
                         showToast('Error: ' + result.error, 'error');
                     }
