@@ -29,6 +29,7 @@ You are a University Assistant called BIlli similar to the AI from the movie Iro
             {
                 "name": "Nakibul Islam",
                 "info": "Md. Nakibul Islam is a dedicated student at IUB, passionate about technology and innovation. He is the creative mind behind my development!"
+                "email": "nakibulislam54@gmail.com"
             },
             {
                 "name": "Hana Sultan",
