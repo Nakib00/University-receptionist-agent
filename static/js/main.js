@@ -43,14 +43,28 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    function checkAndSetScrollable() {
+        if (unansweredContainer.children.length > 3) {
+            unansweredContainer.classList.add("scrollable");
+        } else {
+            unansweredContainer.classList.remove("scrollable");
+        }
+
+        if (answeredContainer.children.length > 3) {
+            answeredContainer.classList.add("scrollable");
+        } else {
+            answeredContainer.classList.remove("scrollable");
+        }
+    }
+
     // --- Question Management ---
     function createQuestionCard(item) {
         const div = document.createElement("div");
         div.className = "question-item";
         div.innerHTML = `<div class="question-text">${item.question}</div>`;
         const submitBtn = document.createElement('button');
-        submitBtn.className = 'btn submit-btn';
-        submitBtn.innerHTML = `Mark as Answered`;
+        submitBtn.className = 'btn btn-answer';
+        submitBtn.innerHTML = `<i data-feather="send"></i> Mark as Answered`;
         submitBtn.onclick = () => {
             fetch("/answer_question", {
                     method: "POST",
@@ -70,6 +84,8 @@ document.addEventListener("DOMContentLoaded", function () {
                             answer: "Marked as answered."
                         }));
                         showToast("Question marked as answered!");
+                        checkAndSetScrollable();
+                        feather.replace(); // Re-run Feather icons
                     } else {
                         showToast('Error: ' + result.error, 'error');
                     }
@@ -83,8 +99,38 @@ document.addEventListener("DOMContentLoaded", function () {
         const div = document.createElement("div");
         div.className = "answered-item";
         div.innerHTML = `<div><strong>Q:</strong> ${item.question}</div><div style="color: var(--secondary-text-color);"><strong>A:</strong> ${item.answer}</div>`;
+        const undoBtn = document.createElement('button');
+        undoBtn.className = 'btn btn-undo';
+        undoBtn.innerHTML = `<i data-feather="undo"></i> Undo`;
+        undoBtn.onclick = () => {
+            fetch("/undo_answer", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    question: item.question
+                })
+            })
+            .then(res => res.json())
+            .then(result => {
+                if (result.success) {
+                    div.remove();
+                    unansweredContainer.appendChild(createQuestionCard({
+                        question: item.question
+                    }));
+                    showToast("Question moved back to inbox!");
+                    checkAndSetScrollable();
+                    feather.replace();
+                } else {
+                    showToast('Error: ' + result.error, 'error');
+                }
+            });
+        };
+        div.appendChild(undoBtn);
         return div;
     }
+
 
     // --- University Data Editor ---
     function populateSectionDropdown() {
@@ -121,6 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
             answeredContainer.innerHTML = "";
             answeredData.answered.forEach(item => answeredContainer.appendChild(createAnsweredCard(item)));
 
+            checkAndSetScrollable(); // Call this function after loading the questions
         } catch (error) {
             showToast("Failed to fetch data from the server.", "error");
         }

@@ -69,6 +69,30 @@ def answer_question():
 
     return jsonify({"success": True})
 
+@app.route("/undo_answer", methods=["POST"])
+def undo_answer():
+    """Moves a question from answered to unanswered."""
+    data = request.get_json()
+    question_to_undo = data.get("question")
+
+    answered = safe_json_load(ANSWERED_QUESTIONS_FILE)
+    updated_answered = [q for q in answered if q['question'] != question_to_undo]
+    question_data = next((q for q in answered if q['question'] == question_to_undo), None)
+
+    if question_data:
+        with open(ANSWERED_QUESTIONS_FILE, "w") as f:
+            json.dump(updated_answered, f, indent=4)
+
+        unanswered = safe_json_load(UNANSWERED_QUESTIONS_FILE)
+        unanswered.append({"question": question_to_undo})
+        with open(UNANSWERED_QUESTIONS_FILE, "w") as f:
+            json.dump(unanswered, f, indent=4)
+
+        return jsonify({"success": True})
+
+    return jsonify({"success": False, "error": "Question not found in answered list."})
+
+
 @app.route("/get_university_data", methods=["GET"])
 def get_university_data_route():
     try:

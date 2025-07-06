@@ -7,23 +7,6 @@ university_data = {
         "total_schools": 6,
         "total_departments": 20
     },
-    "creator_info": {
-        "creators": ["Nakibul Islam", "Hana Sultan", "Umme Aiman"],
-        "about_creators": [
-            {
-                "name": "Nakibul Islam",
-                "info": "Md. Nakibul Islam is a dedicated student at IUB, passionate about technology and innovation. He is the creative mind behind my development!"
-            },
-            {
-                "name": "Hana Sultan",
-                "info": "Hana Sultan is an inspiring individual known for her creativity and leadership. She is always eager to help and motivate others!"
-            },
-            {
-                "name": "Umme Aiman",
-                "info": "Umme Aiman is a dynamic individual known for her intelligence and determination. She is dedicated to her studies and personal growth."
-            }
-        ]
-    },
     "facilities": {
         "library": {
             "location": "3rd floor in BC Building",
@@ -1426,7 +1409,6 @@ university_data = {
         {"question": "How can I get a student ID card?", "answer": "You can apply for a student ID card at the registrar's office in the BC Building on the 2nd floor."},
         {"question": "Where are the computer labs?", "answer": "The computer labs are situated on the 4th floor in the BC Building."},
         {"question": "Where is the Physics lab?", "answer": "The Physics lab is on the 6th floor in the BC Building."},
-        {"question": "Who created you?", "answer": "I was crafted with care by the talented students of IUB and Fab Lab IUB, including Nakibul Islam, Hana Sultan, and Umme Aiman."},
         {"question": "Tell me a joke.", "answer": "Why don't scientists trust atoms? Because they make up everything!"}
     ],
     "office_of_the_vice_chancellor": {
